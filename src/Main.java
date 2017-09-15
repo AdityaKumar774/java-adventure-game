@@ -41,7 +41,54 @@ public class Main {
                 System.out.println("\t3. Run!");
 
                 String input = in.nextLine();
+                if (input.equals("1")){
+                    int damageDealt = rand.nextInt(attackDamage);
+                    int damageTaken = rand.nextInt(enemyAttackDamage);
+
+                    enemyHealth -= damageDealt;
+                    health -= damageTaken;
+
+                    System.out.println("\t> You strike the " + enemy + " for " + damageDealt);
+                    System.out.println("\t> You receive " + damageTaken + " in retaliation!");
+
+                    if(health < 1){
+                    }
+                }
+                else if (input.equals("2")){
+                    if(numHealthPotions > 0){
+                        health += healthPotionHealAmount;
+                        numHealthPotions--;
+                        System.out.println("\t> You drink th ehealth potion, healing yourself for " + healthPotionHealAmount
+                                + "n\t> You now have " + health + " HP."
+                                + "\n\t> You have " + numHealthPotions+ " health potions left");
+                    }
+                    else {
+                        System.out.println("\t> You have no health potions left! Defeat enemies for a chance to get one");
+                    }
+                }
+                else if (input.equals("3")){
+                    System.out.println("\tYou run away from the " + enemy + "!");
+                    continue GAME;
+                }
+                else {
+                    System.out.println("\tInvalid command!");
+                }
             }
+            if(health < 1){
+                System.out.println("\nYou are weak for the battle");
+                break;
+            }
+
+            System.out.println("---------------------------");
+            System.out.println(" # " + enemy + " was defeated! # ");
+            System.out.println(" # You have " + health+ " HP left. #");
+            if (rand.nextInt(100) < healthPotionDropChance){
+                numHealthPotions++;
+                System.out.println(" # The " + enemy + " dropped a health potion #");
+                System.out.println(" # You now have " + numHealthPotions + " health potions left");
+            }
+            System.out.println("---------------------------");
+            System.out.println("What would you like to do?");
         }
     }
 }
