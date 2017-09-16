@@ -58,8 +58,8 @@ public class Main {
                     if(numHealthPotions > 0){
                         health += healthPotionHealAmount;
                         numHealthPotions--;
-                        System.out.println("\t> You drink th ehealth potion, healing yourself for " + healthPotionHealAmount
-                                + "n\t> You now have " + health + " HP."
+                        System.out.println("\t> You drink the health potion, healing yourself for " + healthPotionHealAmount
+                                + "\n\t> You now have " + health + " HP."
                                 + "\n\t> You have " + numHealthPotions+ " health potions left");
                     }
                     else {
@@ -88,7 +88,28 @@ public class Main {
                 System.out.println(" # You now have " + numHealthPotions + " health potions left");
             }
             System.out.println("---------------------------");
-            System.out.println("What would you like to do?");
+            System.out.println("What would you like to do now?");
+            System.out.println("1. Continue fighting");
+            System.out.println("2. Exit game");
+
+            String input = in.nextLine();
+
+            while(!input.equals("1") && !input.equals("2")){
+                System.out.println("Invalid Command");
+                input = in.nextLine();
+            }
+
+            if(input.equals("1")){
+                System.out.println("You continue on your adventure");
+            }
+            else if (input.equals("2")){
+                System.out.println("You exit the game, successful from adventures");
+                break;
+            }
         }
+
+        System.out.println("######################");
+        System.out.println("# THANKS FOR PLAYING #");
+        System.out.println("######################");
     }
 }
